@@ -1,6 +1,6 @@
 var playerName = window.prompt("What is your robot's name?")
-var playerHealth = 10;
-var playerAttack = 30;
+var playerHealth = 100;
+var playerAttack = 10;
 var playerMoney = 10;
 
 var enemyNames = ["Roborto", "Prince Robot IVV", "Robot Mike Tyson"];
@@ -64,18 +64,45 @@ var fight = function(enemyName) {
       }
     };
 
-for(var i = 0; i < enemyNames.length; i++) {
-    if(playerHealth > 0){
-        window.alert("welcome to Robot Gladiators! Round " + ( i +1 ) );
+
+
+var startGame = function(){
+    playerHealth = 100;
+    playerAttack = 10;
+    playerMoney = 10;
+
+    for(var i = 0; i < enemyNames.length; i++) {
+         if(playerHealth > 0){
+             window.alert("welcome to Robot Gladiators! Round " + ( i +1 ) );
    
-        var pickedEnemyName = enemyNames[i];
+            var pickedEnemyName = enemyNames[i];
    
-        enemyHealth = 50;
+            enemyHealth = 50;
    
-        fight(pickedEnemyName);
-}
-    else{
-        window.alert("You have lost everything! Game Over!");
-        break;
+            fight(pickedEnemyName);
+            }   
+        else{
+             window.alert("You have lost everything! Game Over!");
+            break;
     }
   }
+  endGame();
+};
+var endGame = function(){
+    if (playerHealth > 0){
+        window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + ".");
+    }
+    else{
+        window.alert("You've lost your robot in the chaos.");
+    }
+    var playAgainConfirm = window.confirm("Would youlike to play again?");
+    
+    if (playAgainConfirm) {
+        startGame();
+    }
+    else{
+        window.alert("Thank you for playing Robot Gladiators!");
+    }
+};
+
+startGame();
