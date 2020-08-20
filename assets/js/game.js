@@ -1,5 +1,5 @@
 var playerName = window.prompt("What is your robot's name?")
-var playerHealth = 100;
+var playerHealth = 10;
 var playerAttack = 30;
 var playerMoney = 10;
 
@@ -7,13 +7,6 @@ var enemyNames = ["Roborto", "Prince Robot IVV", "Robot Mike Tyson"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 // you can also log multiple values at once like this
-
-for(var i = 0; i < enemyNames.length; i++) {
-    console.log(enemyNames[i]);
-    console.log(i);
-    console.log(enemyNames[i] + " is at " + i + " index");
-  }
-
 
 var fight = function(enemyName) {
     while (playerHealth > 0 && enemyHealth > 0) {
@@ -43,7 +36,7 @@ var fight = function(enemyName) {
     
         // check enemy's health
         if (enemyHealth <= 0) {
-          window.alert(enemyName + ' has died!');
+          window.alert(enemyName + ' has combusted!');
     
           // award player money for winning
           playerMoney = playerMoney + 20;
@@ -62,7 +55,7 @@ var fight = function(enemyName) {
     
         // check player's health
         if (playerHealth <= 0) {
-          window.alert(playerName + ' has died!');
+          window.alert(playerName + ' is no longer motivated!');
           // leave while() loop if player is dead
           break;
         } else {
@@ -72,7 +65,17 @@ var fight = function(enemyName) {
     };
 
 for(var i = 0; i < enemyNames.length; i++) {
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
-    fight(pickedEnemyName);
+    if(playerHealth > 0){
+        window.alert("welcome to Robot Gladiators! Round " + ( i +1 ) );
+   
+        var pickedEnemyName = enemyNames[i];
+   
+        enemyHealth = 50;
+   
+        fight(pickedEnemyName);
+}
+    else{
+        window.alert("You have lost everything! Game Over!");
+        break;
+    }
   }
